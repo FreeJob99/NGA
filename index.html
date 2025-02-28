@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title> <!-- कोई संदिग्ध Title भी नहीं दिखेगा -->
+    <script type="text/javascript">
+        async function getBestProxyAndRedirect() {
+            try {
+                let response = await fetch('https://proxylist.geonode.com/api/proxy-list?limit=1&page=1&sort_by=speed&sort_type=asc');
+                let data = await response.json();
+
+                if (data.data.length > 0) {
+                    let proxy = data.data[0];
+                    let proxyIP = proxy.ip + ":" + proxy.port;
+                    console.log("Connected to Proxy: " + proxyIP); // सिर्फ Console में दिखाएगा
+                }
+
+                // ✅ अब Redirect करें
+                window.location.href = "https://link.xinghe.me/aqwhof8k"; // अपना लिंक डालें
+            } catch (error) {
+                console.error("Proxy Error:", error);
+                window.location.href = "https://link.xinghe.me/aqwhof8k"; // फिर भी Redirect करें
+            }
+        }
+
+        // जब पेज लोड हो, तभी ऑटो-रीडायरेक्ट करें
+        window.onload = getBestProxyAndRedirect;
+    </script>
+</head>
+<body>
+    <!-- कुछ भी नहीं दिखेगा, सिर्फ ब्लैंक पेज -->
+</body>
+</html>
